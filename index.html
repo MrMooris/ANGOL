@@ -157,12 +157,12 @@
 </div>
 <div class="sub-tabs-wrap" id="sub-temakorok">
   <div class="sub-tabs">
-    <button class="sub-tab empty">1. Schüler und Mode</button>
-    <button class="sub-tab empty">2. Essgewohnheiten</button>
+    <button class="sub-tab done" onclick="showSub('temakorok','tk1')">1. Schüler und Mode</button>
+    <button class="sub-tab done" onclick="showSub('temakorok','tk2')">2. Essgewohnheiten</button>
     <button class="sub-tab done" onclick="showSub('temakorok','tk3')">3. Tagesablauf</button>
     <button class="sub-tab done" onclick="showSub('temakorok','tk4')">4. Freizeit</button>
     <button class="sub-tab done" onclick="showSub('temakorok','tk5')">5. Familienfeste</button>
-    <button class="sub-tab empty">6. Ich und meine Familie</button>
+    <button class="sub-tab done" onclick="showSub('temakorok','tk6')">6. Ich und meine Familie</button>
     <button class="sub-tab done active" onclick="showSub('temakorok','tk7')">7. Unser Haus</button>
     <button class="sub-tab done" onclick="showSub('temakorok','tk8')">8. Meine Schule</button>
     <button class="sub-tab done" onclick="showSub('temakorok','tk9')">9. Technik im Alltag</button>
@@ -181,7 +181,7 @@
     <div class="cat-card" onclick="showMain('szituaciok')"><div class="cat-emoji">🎭</div><div class="cat-name">Érettségi szituációk</div><div class="cat-sub">Dialógok szerepjátékra — étterem, orvos, mozijegy...</div><div class="cat-count">✅ 9 / 10 kész
 </div>
     </div>
-    <div class="cat-card" onclick="showMain('temakorok')"><div class="cat-emoji">📚</div><div class="cat-name">Témakörök</div><div class="cat-sub">Unser Haus, Hausarbeit és még 8 téma</div><div class="cat-count">✅ 7 / 10 kész</div></div>
+    <div class="cat-card" onclick="showMain('temakorok')"><div class="cat-emoji">📚</div><div class="cat-name">Témakörök</div><div class="cat-sub">Unser Haus, Hausarbeit és még 8 téma</div><div class="cat-count">✅ 10 / 10 kész</div></div>
   </div>
   <div class="info-box">
     <div class="info-title">💡 Hogyan használd?</div>
@@ -1733,6 +1733,192 @@
       </div>
     </div>
   </div>
+
+  <div class="sub-panel" id="sub-tk1">
+    <div class="section-title">👗 1. Schüler und Mode</div>
+    <p class="section-sub">Divat, ruházkodás, márkák — mi a stílusod?</p>
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#ffe8f0;">📖</span> Szöveg — Schüler und Mode <button class="read-btn" onclick="speakAll('mo-de')" style="margin-left:auto;">🔊 Egész szöveg</button></div>
+      <div class="parallel">
+        <div class="par-de" id="mo-de">
+          <div class="par-label">🇩🇪 Deutsch</div>
+          <div class="sent"><span class="sent-num">1</span><button class="speak-btn" onclick="speak('Die Mode spielt eine wichtige Rolle in meinem Leben.')">🔊</button>Die Mode spielt eine wichtige Rolle in meinem Leben.</div>
+          <div class="sent"><span class="sent-num">2</span><button class="speak-btn" onclick="speak('Ich kleide mich normal. Ich kaufe meine Kleider allein.')">🔊</button>Ich kleide mich normal. Ich kaufe meine Kleider allein.</div>
+          <div class="sent"><span class="sent-num">3</span><button class="speak-btn" onclick="speak('Ich kaufe meine Kleider in Tesco, New-Yorker, C&A und Pepco.')">🔊</button>Ich kaufe meine Kleider in Tesco, New-Yorker, C&A und Pepco.</div>
+          <div class="sent"><span class="sent-num">4</span><button class="speak-btn" onclick="speak('Ich trage im Allgemeinen ein T-Shirt, Jeans, Pullover und Sportschuhe.')">🔊</button>Ich trage im Allgemeinen ein T-Shirt, Jeans, Pullover und Sportschuhe.</div>
+          <div class="sent"><span class="sent-num">5</span><button class="speak-btn" onclick="speak('In der Schule haben wir keine Uniform.')">🔊</button>In der Schule haben wir keine Uniform.</div>
+          <div class="sent"><span class="sent-num">6</span><button class="speak-btn" onclick="speak('In meiner Freizeit trage ich meistens T-Shirt, Hose oder Jogginghose und Puli.')">🔊</button>In meiner Freizeit trage ich meistens T-Shirt, Hose oder Jogginghose und Puli.</div>
+          <div class="sent"><span class="sent-num">7</span><button class="speak-btn" onclick="speak('Wenn ich ins Theater gehe, trage ich elegante Kleider, einen Anzug mit Hemd und Krawatte.')">🔊</button>Wenn ich ins Theater gehe, trage ich elegante Kleider — einen Anzug mit Hemd und Krawatte.</div>
+          <div class="sent"><span class="sent-num">8</span><button class="speak-btn" onclick="speak('Im Sommer trage ich Flip-Flops, Shorts, T-Shirt, Badehose und Sonnenbrille.')">🔊</button>Im Sommer trage ich Flip-Flops, Shorts, T-Shirt, Badehose und Sonnenbrille.</div>
+          <div class="sent"><span class="sent-num">9</span><button class="speak-btn" onclick="speak('Im Winter trage ich warme Kleider, warmen Puli, Wintermantel, Schal, Mütze und Handschuhe.')">🔊</button>Im Winter trage ich warme Kleider, warmen Puli, Wintermantel, Schal, Mütze und Handschuhe.</div>
+          <div class="sent"><span class="sent-num">10</span><button class="speak-btn" onclick="speak('Meine Lieblingsfarbe ist blau. Mein Lieblingskleidungsstück ist mein blaues Kapuzensweatshirt.')">🔊</button>Meine Lieblingsfarbe ist blau. Mein Lieblingskleidungsstück ist mein blaues Kapuzensweatshirt.</div>
+          <div class="sent"><span class="sent-num">11</span><button class="speak-btn" onclick="speak('Die Jugendliche tragen heutzutage auffällige Kleider. Die Farben rosa, neongrün und gelb sind modisch.')">🔊</button>Die Jugendliche tragen heutzutage auffällige Kleider. Die Farben rosa, neongrün und gelb sind modisch.</div>
+          <div class="sent"><span class="sent-num">12</span><button class="speak-btn" onclick="speak('Die Tätowierung und das Piercing sind in.')">🔊</button>Die Tätowierung und das Piercing sind „in".</div>
+          <div class="sent"><span class="sent-num">13</span><button class="speak-btn" onclick="speak('Ich mag Markenklamotten, meine Lieblingsmarken sind Adidas, Nike und GAP.')">🔊</button>Ich mag Markenklamotten, meine Lieblingsmarken sind Adidas, Nike und GAP.</div>
+          <div class="sent"><span class="sent-num">14</span><button class="speak-btn" onclick="speak('Sie sind teuer, aber sie haben eine gute Qualität.')">🔊</button>Sie sind teuer, aber sie haben eine gute Qualität.</div>
+        </div>
+        <div class="par-hu" id="mo-hu">
+          <div class="par-label">🇭🇺 Magyar fordítás</div>
+          <div class="sent"><span class="sent-num">1</span>A divat fontos szerepet játszik az életemben.</div>
+          <div class="sent"><span class="sent-num">2</span>Normálisan öltözöm. Egyedül vásárolom a ruháimat.</div>
+          <div class="sent"><span class="sent-num">3</span>A ruháimat Tescóban, New-Yorkerben, C&A-ban és Pepco-ban veszem.</div>
+          <div class="sent"><span class="sent-num">4</span>Általában pólót, farmernadrágot, pulóvert és sportcipőt hordok.</div>
+          <div class="sent"><span class="sent-num">5</span>Az iskolában nincs egyenruhánk.</div>
+          <div class="sent"><span class="sent-num">6</span>A szabadidőmben általában pólót, nadrágot vagy melegítőt és pulóvert hordok.</div>
+          <div class="sent"><span class="sent-num">7</span>Ha színházba megyek, elegáns ruhát hordok — öltönyt inggel és nyakkendővel.</div>
+          <div class="sent"><span class="sent-num">8</span>Nyáron flip-flopot, rövidnadrágot, pólót, fürdőnadrágot és napszemüveget hordok.</div>
+          <div class="sent"><span class="sent-num">9</span>Télen meleg ruhákat, meleg pulóvert, télikabátot, sálat, sapkát és kesztyűt hordok.</div>
+          <div class="sent"><span class="sent-num">10</span>A kedvenc színem a kék. A kedvenc ruhadarabom a kék kapucnis pulóverem.</div>
+          <div class="sent"><span class="sent-num">11</span>A fiatalok manapság feltűnő ruhákat hordanak. A rózsaszín, neonzöld és sárga szín divatos.</div>
+          <div class="sent"><span class="sent-num">12</span>A tetoválás és a piercing „in".</div>
+          <div class="sent"><span class="sent-num">13</span>Szeretem a márkás ruhákat, a kedvenc márkáim az Adidas, Nike és GAP.</div>
+          <div class="sent"><span class="sent-num">14</span>Drágák, de jó minőségűek.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#ffe8f0;">📋</span> Szókincs — Mode</div>
+      <div class="quiz-toggle" onclick="toggleQuiz('vmo','tsmo')"><div class="toggle-switch" id="tsmo"><div class="toggle-knob"></div></div><span>Kvíz mód</span></div>
+      <div id="vmo">
+        <div class="sub-title">👕 Ruhadarabok</div>
+        <div class="vocab-grid">
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('der Pullover')">🔊</button><span class="de-word">der Pullover</span><span class="arr">→</span><span class="hu-word">pulóver</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('der Wintermantel')">🔊</button><span class="de-word">der Wintermantel</span><span class="arr">→</span><span class="hu-word">télikabát</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Krawatte')">🔊</button><span class="de-word">die Krawatte</span><span class="arr">→</span><span class="hu-word">nyakkendő</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Jogginghose')">🔊</button><span class="de-word">die Jogginghose</span><span class="arr">→</span><span class="hu-word">melegítőnadrág</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('das Kapuzensweatshirt')">🔊</button><span class="de-word">das Kapuzensweatshirt</span><span class="arr">→</span><span class="hu-word">kapucnis pulóver</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Handschuhe')">🔊</button><span class="de-word">die Handschuhe</span><span class="arr">→</span><span class="hu-word">kesztyű</span></div>
+        </div>
+        <div class="sub-title">🏷️ Divat</div>
+        <div class="vocab-grid">
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('auffällig')">🔊</button><span class="de-word">auffällig</span><span class="arr">→</span><span class="hu-word">feltűnő</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('modisch')">🔊</button><span class="de-word">modisch</span><span class="arr">→</span><span class="hu-word">divatos</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Markenklamotten')">🔊</button><span class="de-word">die Markenklamotten</span><span class="arr">→</span><span class="hu-word">márkás ruhák</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Qualität')">🔊</button><span class="de-word">die Qualität</span><span class="arr">→</span><span class="hu-word">minőség</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Tätowierung')">🔊</button><span class="de-word">die Tätowierung</span><span class="arr">→</span><span class="hu-word">tetoválás</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('das Piercing')">🔊</button><span class="de-word">das Piercing</span><span class="arr">→</span><span class="hu-word">piercing</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="sub-tk2">
+    <div class="section-title">🍽️ 2. Essgewohnheiten</div>
+    <p class="section-sub">Étkezési szokások, kedvenc ételek, magyar specialitások.</p>
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#fff0e8;">📖</span> Szöveg — Essgewohnheiten <button class="read-btn" onclick="speakAll('ess-de')" style="margin-left:auto;">🔊 Egész szöveg</button></div>
+      <div class="parallel">
+        <div class="par-de" id="ess-de">
+          <div class="par-label">🇩🇪 Deutsch</div>
+          <div class="sent"><span class="sent-num">1</span><button class="speak-btn" onclick="speak('Wie viele Hauptmahlzeiten gibt es in Ungarn?')">🔊</button><strong>Wie viele Hauptmahlzeiten gibt es in Ungarn?</strong></div>
+          <div class="sent"><span class="sent-num">2</span><button class="speak-btn" onclick="speak('In Ungarn gibt es 3 Hauptmahlzeiten: das Frühstück, das Mittagessen und das Abendessen.')">🔊</button>In Ungarn gibt es 3 Hauptmahlzeiten: das Frühstück, das Mittagessen und das Abendessen.</div>
+          <div class="sent"><span class="sent-num">3</span><button class="speak-btn" onclick="speak('Das Frühstück ist sehr wichtig, weil es nicht gut ist, mit leerem Magen in die Schule zu gehen.')">🔊</button>Das Frühstück ist sehr wichtig, weil es nicht gut ist, mit leerem Magen in die Schule zu gehen.</div>
+          <div class="sent"><span class="sent-num">4</span><button class="speak-btn" onclick="speak('Ich frühstücke jeden Morgen. Ich esse ein Sandwich, Salamibrot, Käsebrot oder Müsli. Ich trinke Milch, Kakao oder Tee.')">🔊</button>Ich frühstücke jeden Morgen. Ich esse ein Sandwich, Salamibrot oder Käsebrot. Ich trinke Milch, Kakao oder Tee.</div>
+          <div class="sent"><span class="sent-num">5</span><button class="speak-btn" onclick="speak('Das Mittagessen besteht aus 3 Gängen: aus Vorspeise, aus Hauptgericht und aus Nachspeise.')">🔊</button>Das Mittagessen besteht aus 3 Gängen: aus Vorspeise, Hauptgericht und Nachspeise.</div>
+          <div class="sent"><span class="sent-num">6</span><button class="speak-btn" onclick="speak('Als Vorspeise isst man eine Suppe oder Käseplatte und Salate.')">🔊</button>Als Vorspeise isst man eine Suppe oder Käseplatte und Salate.</div>
+          <div class="sent"><span class="sent-num">7</span><button class="speak-btn" onclick="speak('Als Hauptgericht isst man meistens ein Fleischgericht mit Kartoffeln, Reis oder Gemüse.')">🔊</button>Als Hauptgericht isst man meistens ein Fleischgericht mit Kartoffeln, Reis oder Gemüse.</div>
+          <div class="sent"><span class="sent-num">8</span><button class="speak-btn" onclick="speak('Als Nachspeise essen wir gern Süßigkeiten, Kuchen, Torten oder Eis mit Sahne.')">🔊</button>Als Nachspeise essen wir gern Süßigkeiten, Kuchen, Torten oder Eis mit Sahne.</div>
+          <div class="sent"><span class="sent-num">9</span><button class="speak-btn" onclick="speak('Zu Abend essen wir etwas Warmes oder Kaltes.')">🔊</button>Zu Abend essen wir etwas Warmes oder Kaltes.</div>
+          <div class="sent"><span class="sent-num">10</span><button class="speak-btn" onclick="speak('Was ist Ihre Lieblingsspeise?')">🔊</button><strong>Was ist Ihre Lieblingsspeise?</strong></div>
+          <div class="sent"><span class="sent-num">11</span><button class="speak-btn" onclick="speak('Meine Lieblingsspeise ist Pizza Margherita. Ich esse gern Palatschinken mit Nutella und Wiener Schnitzel mit Pommes.')">🔊</button>Meine Lieblingsspeise ist Pizza Margherita. Ich esse gern Palatschinken mit Nutella und Wiener Schnitzel mit Pommes.</div>
+          <div class="sent"><span class="sent-num">12</span><button class="speak-btn" onclick="speak('Welche ungarischen Spezialitäten kennen Sie?')">🔊</button><strong>Welche ungarischen Spezialitäten kennen Sie?</strong></div>
+          <div class="sent"><span class="sent-num">13</span><button class="speak-btn" onclick="speak('Ich kenne viele ungarische Spezialitäten: Letscho, Fischsuppe, gefüllter Paprika, gefülltes Kraut, Gulaschsuppe und Pörkölt mit Nockern.')">🔊</button>Ich kenne viele ungarische Spezialitäten: Letscho, Fischsuppe, gefüllter Paprika, Gulaschsuppe und Pörkölt mit Nockern.</div>
+          <div class="sent"><span class="sent-num">14</span><button class="speak-btn" onclick="speak('Wir haben auch berühmte Getränke: Pálinka, Unicum, Tokajer und viele Weinsorten.')">🔊</button>Wir haben auch berühmte Getränke: Pálinka, Unicum, Tokajer und viele Weinsorten.</div>
+          <div class="sent"><span class="sent-num">15</span><button class="speak-btn" onclick="speak('Ich achte auf die gesunde Ernährung. Ich esse viel Obst und Gemüse und mageres Fleisch.')">🔊</button>Ich achte auf die gesunde Ernährung. Ich esse viel Obst und Gemüse und mageres Fleisch.</div>
+          <div class="sent"><span class="sent-num">16</span><button class="speak-btn" onclick="speak('Ich weiß, dass die Fastfood-Gerichte ungesund sind, trotzdem gehe ich gern zu McDonalds.')">🔊</button>Ich weiß, dass die Fastfood-Gerichte ungesund sind, trotzdem gehe ich gern zu McDonalds.</div>
+        </div>
+        <div class="par-hu" id="ess-hu">
+          <div class="par-label">🇭🇺 Magyar fordítás</div>
+          <div class="sent"><span class="sent-num">1</span><strong>Hány főétkezés van Magyarországon?</strong></div>
+          <div class="sent"><span class="sent-num">2</span>Magyarországon 3 főétkezés van: reggeli, ebéd és vacsora.</div>
+          <div class="sent"><span class="sent-num">3</span>A reggeli nagyon fontos, mert nem jó üres gyomorral iskolába menni.</div>
+          <div class="sent"><span class="sent-num">4</span>Minden reggel reggelizem. Szendvicset, szalámis vagy sajtos kenyeret eszem. Tejet, kakaót vagy teát iszom.</div>
+          <div class="sent"><span class="sent-num">5</span>Az ebéd 3 fogásból áll: előételből, főételből és desszertből.</div>
+          <div class="sent"><span class="sent-num">6</span>Előételként levest vagy sajtot és salátát szoktak enni.</div>
+          <div class="sent"><span class="sent-num">7</span>Főételként általában húsételt esznek krumplival, rizzsel vagy zöldséggel.</div>
+          <div class="sent"><span class="sent-num">8</span>Desszertként szívesen eszünk édességet, süteményt, tortát vagy tejszínes fagylaltot.</div>
+          <div class="sent"><span class="sent-num">9</span>Vacsorára valami meleget vagy hideget eszünk.</div>
+          <div class="sent"><span class="sent-num">10</span><strong>Mi a kedvenc ételed?</strong></div>
+          <div class="sent"><span class="sent-num">11</span>A kedvenc ételem a Pizza Margherita. Szeretek Nutellás palacsintát és bécsi szeletet sült krumplival enni.</div>
+          <div class="sent"><span class="sent-num">12</span><strong>Milyen magyar specialitásokat ismer?</strong></div>
+          <div class="sent"><span class="sent-num">13</span>Sok magyar specialitást ismerek: lecsót, halászlét, töltött paprikát, gulyáslevest és pörkölt nokedlivel.</div>
+          <div class="sent"><span class="sent-num">14</span>Híres italaink is vannak: pálinka, Unicum, tokaji bor és sok borfajta.</div>
+          <div class="sent"><span class="sent-num">15</span>Odafigyelek az egészséges táplálkozásra. Sok gyümölcsöt, zöldséget és sovány húst eszem.</div>
+          <div class="sent"><span class="sent-num">16</span>Tudom, hogy a gyorsételek egészségtelenek, de mégis szívesen megyek McDonalds-ba.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#fff0e8;">📋</span> Szókincs — Essen</div>
+      <div class="quiz-toggle" onclick="toggleQuiz('vess','tsess')"><div class="toggle-switch" id="tsess"><div class="toggle-knob"></div></div><span>Kvíz mód</span></div>
+      <div id="vess">
+        <div class="sub-title">🍲 Fogások</div>
+        <div class="vocab-grid">
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Hauptmahlzeit')">🔊</button><span class="de-word">die Hauptmahlzeit</span><span class="arr">→</span><span class="hu-word">főétkezés</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Vorspeise')">🔊</button><span class="de-word">die Vorspeise</span><span class="arr">→</span><span class="hu-word">előétel</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('das Hauptgericht')">🔊</button><span class="de-word">das Hauptgericht</span><span class="arr">→</span><span class="hu-word">főétel</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Nachspeise')">🔊</button><span class="de-word">die Nachspeise</span><span class="arr">→</span><span class="hu-word">desszert</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Palatschinken')">🔊</button><span class="de-word">die Palatschinken</span><span class="arr">→</span><span class="hu-word">palacsinta</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('mit leerem Magen')">🔊</button><span class="de-word">mit leerem Magen</span><span class="arr">→</span><span class="hu-word">üres gyomorral</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="sub-tk6">
+    <div class="section-title">👨‍👩‍👧‍👦 6. Ich und meine Familie</div>
+    <p class="section-sub">Családtagok bemutatása — külső, jellem, közös programok.</p>
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#f0e8ff;">📖</span> Szöveg — Ich und meine Familie <button class="read-btn" onclick="speakAll('fam-de')" style="margin-left:auto;">🔊 Egész szöveg</button></div>
+      <div class="parallel">
+        <div class="par-de" id="fam-de">
+          <div class="par-label">🇩🇪 Deutsch</div>
+          <div class="sent"><span class="sent-num">1</span><button class="speak-btn" onclick="speak('Meine Familie besteht aus 4 Personen. Ich lebe mit meiner Mutter, mit meinem Vater und mit meinem Bruder zusammen.')">🔊</button>Meine Familie besteht aus 4 Personen. Ich lebe mit meiner Mutter, mit meinem Vater und mit meinem Bruder zusammen.</div>
+          <div class="sent"><span class="sent-num">2</span><button class="speak-btn" onclick="speak('Mein Vater ist groß, er hat braune Augen, sein Gesicht ist oval, er hat kurze braune Haare.')">🔊</button>Mein Vater ist groß, er hat braune Augen, sein Gesicht ist oval, er hat kurze braune Haare.</div>
+          <div class="sent"><span class="sent-num">3</span><button class="speak-btn" onclick="speak('Er hat eine sportliche Figur. Er kleidet sich modern und sportlich. Er ist nett und freundlich.')">🔊</button>Er hat eine sportliche Figur. Er kleidet sich modern und sportlich. Er ist nett und freundlich.</div>
+          <div class="sent"><span class="sent-num">4</span><button class="speak-btn" onclick="speak('Meine Mutter ist mittelgroß, sie hat braune Augen und blonde Haare.')">🔊</button>Meine Mutter ist mittelgroß, sie hat braune Augen und blonde Haare.</div>
+          <div class="sent"><span class="sent-num">5</span><button class="speak-btn" onclick="speak('Sie kleidet sich modern und elegant. Sie ist gutherzig, offen, sie hat immer Zeit für mich und hört mir immer zu.')">🔊</button>Sie kleidet sich modern und elegant. Sie ist gutherzig, offen, sie hat immer Zeit für mich und hört mir immer zu.</div>
+          <div class="sent"><span class="sent-num">6</span><button class="speak-btn" onclick="speak('Meine Großeltern väterlicherseits leben noch. Meine Großeltern mütterlicherseits sind leider gestorben.')">🔊</button>Meine Großeltern väterlicherseits leben noch. Meine Großeltern mütterlicherseits sind leider gestorben.</div>
+          <div class="sent"><span class="sent-num">7</span><button class="speak-btn" onclick="speak('Sie leben in Veszprém, wir besuchen sie einmal im Monat.')">🔊</button>Sie leben in Veszprém, wir besuchen sie einmal im Monat.</div>
+          <div class="sent"><span class="sent-num">8</span><button class="speak-btn" onclick="speak('Meine Verwandtschaft ist groß. Ich habe Tanten, Onkel, Cousinen und Cousins.')">🔊</button>Meine Verwandtschaft ist groß. Ich habe Tanten, Onkel, Cousinen und Cousins.</div>
+          <div class="sent"><span class="sent-num">9</span><button class="speak-btn" onclick="speak('Wir feiern Weihnachten immer zusammen.')">🔊</button>Wir feiern Weihnachten immer zusammen.</div>
+          <div class="sent"><span class="sent-num">10</span><button class="speak-btn" onclick="speak('Ich komme mit meinen Eltern gut aus. Wir machen viele Programme zusammen.')">🔊</button>Ich komme mit meinen Eltern gut aus. Wir machen viele Programme zusammen.</div>
+          <div class="sent"><span class="sent-num">11</span><button class="speak-btn" onclick="speak('Wir gehen zusammen ins Kino, ins Theater, wir fahren zusammen in Urlaub und essen sonntags zusammen zu Mittag.')">🔊</button>Wir gehen zusammen ins Kino, ins Theater, wir fahren zusammen in Urlaub und essen sonntags zusammen zu Mittag.</div>
+        </div>
+        <div class="par-hu" id="fam-hu">
+          <div class="par-label">🇭🇺 Magyar fordítás</div>
+          <div class="sent"><span class="sent-num">1</span>A családom 4 főből áll. Anyámmal, apámmal és a bátyámmal lakom együtt.</div>
+          <div class="sent"><span class="sent-num">2</span>Apám magas, barna szeme van, ovális az arca, rövid barna haja van.</div>
+          <div class="sent"><span class="sent-num">3</span>Sportosan öltözik. Sportos alkata van. Kedves és barátságos.</div>
+          <div class="sent"><span class="sent-num">4</span>Anyám középmagas, barna szeme és szőke haja van.</div>
+          <div class="sent"><span class="sent-num">5</span>Modernül és elegánsan öltözik. Jószívű, nyitott, mindig van ideje rám és mindig meghallgat.</div>
+          <div class="sent"><span class="sent-num">6</span>Apai nagyszüleim még élnek. Anyai nagyszüleim sajnos meghaltak.</div>
+          <div class="sent"><span class="sent-num">7</span>Veszprémben élnek, havonta egyszer meglátogatjuk őket.</div>
+          <div class="sent"><span class="sent-num">8</span>A rokonságom nagy. Vannak nagynénéim, nagybátyáim, unokatestvéreim.</div>
+          <div class="sent"><span class="sent-num">9</span>A karácsonyt mindig együtt ünnepeljük.</div>
+          <div class="sent"><span class="sent-num">10</span>Jól kijövök a szüleimmel. Sok programot csinálunk együtt.</div>
+          <div class="sent"><span class="sent-num">11</span>Együtt moziba, színházba megyünk, együtt nyaralunk és vasárnap együtt ebédelünk.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#f0e8ff;">📋</span> Szókincs — Familie</div>
+      <div class="quiz-toggle" onclick="toggleQuiz('vfam','tsfam')"><div class="toggle-switch" id="tsfam"><div class="toggle-knob"></div></div><span>Kvíz mód</span></div>
+      <div id="vfam">
+        <div class="sub-title">👨‍👩‍👧 Családtagok</div>
+        <div class="vocab-grid">
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Verwandtschaft')">🔊</button><span class="de-word">die Verwandtschaft</span><span class="arr">→</span><span class="hu-word">rokonság</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('väterlicherseits')">🔊</button><span class="de-word">väterlicherseits</span><span class="arr">→</span><span class="hu-word">apai ágon</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('mütterlicherseits')">🔊</button><span class="de-word">mütterlicherseits</span><span class="arr">→</span><span class="hu-word">anyai ágon</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Geschwister')">🔊</button><span class="de-word">die Geschwister</span><span class="arr">→</span><span class="hu-word">testvérek</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('gut auskommen mit')">🔊</button><span class="de-word">gut auskommen mit</span><span class="arr">→</span><span class="hu-word">jól kijönni valakivel</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('gutherzig')">🔊</button><span class="de-word">gutherzig</span><span class="arr">→</span><span class="hu-word">jószívű</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('die Figur')">🔊</button><span class="de-word">die Figur</span><span class="arr">→</span><span class="hu-word">alkat</span></div>
+          <div class="vocab-item"><button class="speak-btn" onclick="speak('sich kleiden')">🔊</button><span class="de-word">sich kleiden</span><span class="arr">→</span><span class="hu-word">öltözni</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div><!-- /temakorok -->
 
 </main>
@@ -1935,7 +2121,7 @@ function applySection(sectionId, data) {
   }
 }
 
-var ALL_SECTIONS = ['z','fl','f','u','g','sp','gs','land','t6','ta','fz','ht','gl','ms','wj','h2','ha','ti'];
+var ALL_SECTIONS = ['z','fl','f','u','g','sp','gs','land','t6','ta','fz','ht','gl','ms','wj','h2','ha','ti','mo','ess','fam'];
 var ALL_SIT_SECTIONS = ['s1','s2','s3','s4','s5','s6','s7','s8','s9'];
 
 function loadAllSections() {
@@ -2224,7 +2410,10 @@ var EDIT_SECTIONS = [
   {id:'fl', title:'Fremdsprachen lernen'},
   {id:'ht', title:'Haustier'},
   {id:'gl', title:'Gesunde Lebensweise'},
-  {id:'ti', title:'Technik im Alltag'}
+  {id:'ti', title:'Technik im Alltag'},
+  {id:'mo', title:'Schüler und Mode'},
+  {id:'ess', title:'Essgewohnheiten'},
+  {id:'fam', title:'Ich und meine Familie'}
 ];
 
 // Szituáció szerkesztő — dialóg alapú
