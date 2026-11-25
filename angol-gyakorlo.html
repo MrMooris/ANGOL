@@ -78,6 +78,9 @@ function(){var p=R(P);return O(Cap(p[0])+" ___ a car.",[p[3]?"has":"have"],["hav
 function(){var p=R(P);return O(Cap(p[0])+" ___ a car last year.",["had"],["had","has","have"],"A have múlt ideje: had.")},
 function(){var p=R(P);return O(Cap(p[0])+" ___ a car last year. (not have)",["didn't have","did not have"],0,"Múlt tagadás: didn't + alapige.")}]},
 {id:"pa",name:"Past Simple",hu:"Egyszerű múlt",h:0,g:[
+function(){var x=R([["stay","stayed"],["play","played"],["try","tried"],["cry","cried"],["study","studied"],["bake","baked"],["cook","cooked"],["go","went"],["eat","ate"],["buy","bought"],["win","won"]]);return O("Egyszerű múlt: "+x[0]+" → ___",[x[1]],0,"-d / -ed; y → -ied; rendhagyó: V2 alak.")},
+function(){var n=2+Math.random()*8|0;return O(n+" "+R(["years","minutes","days"])+" ___ (ezelőtt)",["ago"],["ago","before","last"],"... ago = ... ezelőtt.")},
+function(){var y=Math.random()<.5;return O(R(["Did you pass the exam?","Did you win the match?","Did you watch TV last night?"])+" "+(y?"Yes":"No")+", I ___.",[y?"did":"didn't"],sh(["did","didn't","was"]),"Rövid válasz: Yes, I did. / No, I didn't.")},
 function(){var p=R(P),v=R(V);return O(Cap(p[0])+" ___ "+v[4]+" "+R(AG)+". ("+v[0]+")",[v[2]],0,"Múlt alak: "+v[0]+" → "+v[2]+".")},
 function(){var p=R(P),v=R(V);return O(Cap(p[0])+" ___ "+v[4]+" "+R(AG)+". (not "+v[0]+")",["didn't "+v[0],"did not "+v[0]],0,"Didn't után alapige jön.")},
 function(){var p=R(P),v=R(V);return O("Did "+p[0]+" ___ "+v[4]+" "+R(AG)+"?",[v[0]],sh([v[0],v[2],v[1]]),"Did után mindig az alapige áll (nem went!).")}]},
