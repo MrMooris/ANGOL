@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Angol gyakorló</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f5f1;--card:#fff;--tx:#1d1d1b;--mu:#6b6a64;--bd:#e3e1d9;--ok:#1f9d55;--no:#d64545;--okb:#e3f6ea;--nob:#fbe6e6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#16161a;--card:#1f1f25;--tx:#ecebe6;--mu:#9b9a94;--bd:#2f2f38;--okb:#16341f;--nob:#3a1d1d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:6}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:12px 14px 8px;border-bottom:1px solid var(--bd)}
+h1{margin:0 0 6px;font-size:20px}
+#chips{display:flex;gap:6px;overflow-x:auto;padding:4px 0}
+.chip{flex:none;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:99px;padding:6px 13px;font-size:14px;cursor:pointer}
+.chip.on{background:hsl(var(--h) 60% 45%);border-color:transparent;color:#fff}
+main{max-width:620px;margin:0 auto;padding:16px 14px}
+.top{display:flex;justify-content:space-between;align-items:baseline;color:var(--mu);font-size:14px;margin-bottom:8px}
+.top b{color:var(--tx)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px}
+.hu{color:var(--mu);font-size:14px;margin:0 0 8px}
+#q{font-size:21px;line-height:1.45;margin:0 0 16px}
+.bl{display:inline-block;min-width:60px;border-bottom:3px solid hsl(var(--h) 60% 50%);text-align:center;color:hsl(var(--h) 60% 45%);font-weight:700}
+#o{display:grid;gap:8px}
+.ob{padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:17px;text-align:left;cursor:pointer}
+.ob.ok{background:var(--okb);border-color:var(--ok)}.ob.no{background:var(--nob);border-color:var(--no)}
+input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:18px}
+button.go{margin-top:10px;width:100%;padding:12px;border:0;border-radius:12px;background:hsl(var(--h) 60% 45%);color:#fff;font-size:17px;cursor:pointer}
+#fb{margin-top:14px;padding:12px 14px;border-radius:12px;display:none}
+#fb.ok{display:block;background:var(--okb)}#fb.no{display:block;background:var(--nob)}
+#fb small{display:block;color:var(--mu);margin-top:4px;font-size:14px}
+.rs{background:none;border:0;color:var(--mu);font-size:13px;cursor:pointer;margin-top:14px;text-decoration:underline}
+</style>
+</head>
+<body>
+<header><h1>✍️ Angol gyakorló <a href="angol-jegyzet.html" style="font-size:14px;font-weight:400;margin-left:8px;color:inherit">📘 Jegyzetek</a></h1><div id="chips"></div></header>
+<main>
+<div class="top"><span id="tn"></span><span id="sc"></span></div>
+<div class="card">
+<p class="hu" id="hu"></p>
+<p id="q"></p>
+<div id="o"></div>
+<div id="ti"><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Írd be a választ…"><button class="go" id="ck">Ellenőrzés</button></div>
+<div id="fb"></div>
+<button class="go" id="nx" style="display:none">Következő →</button>
+</div>
+<button class="rs" id="rs">Pontszám nullázása</button>
+</main>
+<script>
+var R=function(a){return a[Math.random()*a.length|0]};
+var sh=function(a){return a.map(function(x){return[Math.random(),x]}).sort(function(a,b){return a[0]-b[0]}).map(function(x){return x[1]})};
+var Cap=function(s){return s[0].toUpperCase()+s.slice(1)};
+var ap=function(s){return s.replace(/'/g,"’")};
+var nm=function(s){return s.toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g," ").replace(/[.?!]+$/,"").trim()};
+var P=[["I","am","was",0],["you","are","were",0],["he","is","was",1],["she","is","was",1],["it","is","was",1],["we","are","were",0],["they","are","were",0],["Kati","is","was",1],["my brother","is","was",1],["the girls","are","were",0]];
+var V=[["work","works","worked","working","in a shop"],["play","plays","played","playing","football"],["watch","watches","watched","watching","TV"],["clean","cleans","cleaned","cleaning","the kitchen"],["cook","cooks","cooked","cooking","dinner"],["study","studies","studied","studying","English"],["listen","listens","listened","listening","to music"],["go","goes","went","going","to school"],["eat","eats","ate","eating","eggs"],["drink","drinks","drank","drinking","milk"],["see","sees","saw","seeing","a film"],["buy","buys","bought","buying","a book"],["come","comes","came","coming","home"]];
+var AG=["yesterday","last week","two days ago","last year"],NOW=["now","at the moment","right now"],ADV=["always","usually","never","hardly ever"];
+var ADJ=["tired","happy","late","at home","hungry"];
+var GOI=[["run","running"],["swim","swimming"],["dance","dancing"],["shop","shopping"],["cycle","cycling"],["hike","hiking"],["climb","climbing"],["surf","surfing"],["sail","sailing"]];
+var STA=[["want","wants","wanting","a coffee"],["need","needs","needing","help"],["know","knows","knowing","the answer"],["like","likes","liking","pizza"],["love","loves","loving","music"],["hate","hates","hating","homework"],["understand","understands","understanding","this"],["prefer","prefers","preferring","tea"],["remember","remembers","remembering","his name"],["hear","hears","hearing","a noise"]];
+var FX=[["The chicken ___ lovely.","tastes","is tasting","Taste / smell: ha az étel, tárgy íze, illata a téma, statikus."],["Your perfume ___ wonderful.","smells","is smelling","Smell: ha a tárgyból jön az illat, statikus."],["She ___ from Spain.","comes","is coming","Származás: statikus."],["I ___ the weather is cold. (szerintem)","think","am thinking","Vélemény (think): statikus."],["She ___ 3 children.","has","is having","Birtoklás (have): statikus."],["I ___ a shower now.","am having","have","Have + tevékenység: lehet -ing."],["She ___ beautiful tonight.","looks","is looking","Kinézet (look): statikus."],["Why are you ___ at me?","looking","look","Nézni (cselekvés): lehet -ing."],["Wait for me, I ___ !","'m coming","come","\"Jönni\": bármely igeidő."],["I ___ my boss tomorrow. (megbeszélt találkozó)","am seeing","see","See = találkozni: lehet -ing."],["I ___ you now. (látlak)","can see","am seeing","Látlak = I can see you; a see statikus."]];
+var HP=[["the bus","a busz"],["the taxi","a taxi"],["the teacher","a tanár"],["my brother","a bátyám"]],HQ=[["the girls","a lányok"],["my friends","a barátaim"],["the kids","a gyerekek"]];
+var QW=[["What","Mi? Mit?"],["Who","Ki?"],["Whose","Kié?"],["Where","Hol? Hová?"],["When","Mikor?"],["Why","Miért?"],["Which","Melyik?"],["How","Hogyan?"],["How much","Mennyi?"],["How many","Hány?"],["How old","Hány éves?"],["How often","Milyen gyakran?"],["How long","Mennyi ideig?"],["How far","Milyen messze?"],["How tall","Milyen magas?"],["What time","Hány órakor?"]];
+var VC=[["seldom","ritkán"],["always","mindig"],["never","soha"],["usually","általában"],["often","gyakran"],["sometimes","néha"],["hardly ever","alig valaha"],["regularly","rendszeresen"],["at noon","délben"],["just","éppen most"],["photography","fotózás"],["cycling","biciklizés"],["bicycle","bicikli"],["to cycle","biciklizni"],["ankle","boka"],["elbow","könyök"],["ankle ligament","bokaszalag"],["torn / rip","elszakad"],["ribbon","szalag"],["surgeon","sebész"],["surgery","műtés"],["medicine","gyógyszer"],["anxious","stresszes"],["anxiety","idegesség"],["flight","repülőjárat"],["train","vonat"],["boarding pass","beszállókártya"],["holiday home","nyaraló"],["wallet","pénztárca"],["battery","elem"],["pants","nadrág (US)"],["trousers","nadrág"],["jeans","farmer"],["shoes","cipő"],["socks","zokni"],["glasses","szemüveg"],["headphones","fejhallgató"],["Friday","péntek"],["it passes","elmegy, elmúlik"],["language exam","nyelvvizsga"],["shore","part"],["China","Kína"],["French","francia"],["theory","elmélet"],["highway code","KRESZ"],["before","előtt"]];
+var sf=function(p,v){return p[3]?v[1]:v[0]};
+var con=function(p){return p[0]+"'"+({am:"m",is:"s",are:"re"})[p[1]]};
+function O(q,a,o,t,hu){return{q:q,a:a,o:o,t:t,hu:hu}}
+function quiz(L,tip){var i=R(L),d=Math.random()<.5?0:1,w=sh(L.filter(function(x){return x!==i})).slice(0,3).map(function(x){return x[1-d]});
+return O(d?"Mi a magyar jelentése: ___ ":"Mi az angol megfelelője: ___ ",[i[1-d]],sh([i[1-d]].concat(w)),tip,i[d])}
+var T=[
+{id:"ab",name:"Alapok",hu:"To be, do, have",h:260,g:[
+function(){var p=R(P);return O(Cap(p[0])+" ___ "+R(ADJ)+" now.",[p[1]],["am","is","are"],"I → am, he/she/it → is, you/we/they → are.")},
+function(){var p=R(P);return O(Cap(p[0])+" ___ "+R(ADJ)+" yesterday.",[p[2]],["was","were"],"I/he/she/it → was, you/we/they → were.")},
+function(){var p=R(P),v=R(V);return O("___ "+p[0]+" "+v[0]+" "+v[4]+"?",[p[3]?"Does":"Do"],["Do","Does"],"He/she/it → does, a többi → do.")},
+function(){var p=R(P),v=R(V);return O(Cap(p[0])+" ___ "+v[0]+" "+v[4]+".",[p[3]?"doesn't":"don't"],["don't","doesn't"],"Tagadás: don't / doesn't + alapige.")},
+function(){var p=R(P);return O(Cap(p[0])+" ___ a car.",[p[3]?"has":"have"],["have","has"],"He/she/it → has, a többi → have.")},
+function(){var p=R(P);return O(Cap(p[0])+" ___ a car last year.",["had"],["had","has","have"],"A have múlt ideje: had.")},
+function(){var p=R(P);return O(Cap(p[0])+" ___ a car last year. (not have)",["didn't have","did not have"],0,"Múlt tagadás: didn't + alapige.")}]},
+{id:"pa",name:"Past Simple",hu:"Egyszerű múlt",h:0,g:[
+function(){var p=R(P),v=R(V);return O(Cap(p[0])+" ___ "+v[4]+" "+R(AG)+". ("+v[0]+")",[v[2]],0,"Múlt alak: "+v[0]+" → "+v[2]+".")},
+function(){var p=R(P),v=R(V);return O(Cap(p[0])+" ___ "+v[4]+" "+R(AG)+". (not "+v[0]+")",["didn't "+v[0],"did not "+v[0]],0,"Didn't után alapige jön.")},
+function(){var p=R(P),v=R(V);return O("Did "+p[0]+" ___ "+v[4]+" "+R(AG)+"?",[v[0]],sh([v[0],v[2],v[1]]),"Did után mindig az alapige áll (nem went!).")}]},
+{id:"ps",name:"Present Simple",hu:"Egyszerű jelen",h:210,g:[
+function(){var p=R(P),v=R(V),a=R(ADV),r=sh(V).length&&v[4],S=Cap(p[0]),f=sf(p,v);return O("Melyik helyes?",[S+" "+a+" "+f+" "+r+"."],sh([S+" "+a+" "+f+" "+r+".",S+" "+f+" "+a+" "+r+".",S+" "+f+" "+r+" "+a+"."]),"A gyakoriság határozó az alany és az ige között áll.")},
+function(){var p=R(P),v=R(V);return O(Cap(p[0])+" "+R(["always","usually","often","sometimes"])+" ___ "+v[4]+". ("+v[0]+")",[sf(p,v)],0,"He/she/it → -s rag.")},
+function(){var x=R([["Mondays","on"],["the morning","in"],["the afternoon","in"],["the evening","in"],["March","in"],["night","at"],["midnight","at"],["noon","at"],["the weekend","at"]]);return O("We go out ___ "+x[0]+".",[x[1]],["on","in","at"],"on + napok, in + napszak / hónap, at + night, midnight, noon, the weekend.")},
+function(){var g=R(GOI);return O("I always go ___ at the weekend. ("+g[0]+")",[g[1]],0,"go + -ing-es ige.")},
+function(){var v=R(V.slice(0,9));return O("I love ___. ("+v[0]+")",[v[3]],0,"like / love / hate / enjoy után -ing-es ige jön.")},
+function(){var f=R([["The film","start","starts","at 8"],["The shop","open","opens","at 9"],["The bus","leave","leaves","at 5"],["The lesson","finish","finishes","at 2"],["The bank","close","closes","at 4"]]);return O(f[0]+" ___ "+f[3]+". (menetrend, "+f[1]+")",[f[2]],0,"Menetrendnél, programnál egyszerű jelen.")}]},
+{id:"pc",name:"Present Continuous",hu:"Folyamatos jelen",h:150,g:[
+function(){var p=R(P),v=R(V);return O(Cap(p[0])+" ___ "+v[4]+" "+R(NOW)+". ("+v[0]+")",[p[1]+" "+v[3],con(p)+" "+v[3]],0,"létige (am / is / are) + -ing.")},
+function(){var p=R(P),v=R(V),a=[p[1]+" not "+v[3],con(p)+" not "+v[3]];if(p[0]!="I")a.push(p[0]+" "+(p[1]=="is"?"isn't":"aren't")+" "+v[3]);return O(Cap(p[0])+" ___ "+v[4]+" now. (not "+v[0]+")",a,0,"létige + not + -ing.")},
+function(){var p=R(P),v=R(V),c=Math.random()<.5,S=Cap(p[0]),s=sf(p,v),g=p[1]+" "+v[3];return O(c?S+" ___ "+v[4]+" "+R(NOW)+".":S+" "+R(["always","usually","often"])+" ___ "+v[4]+".",[c?g:s],sh([s,g]),c?"Most zajlik → folyamatos jelen.":"Rendszeres cselekvés → egyszerű jelen.")},
+function(){var p=R(P),v=R(V);return O(Cap(p[0])+" ___ "+v[4]+" tomorrow. (megszervezett terv)",[p[1]+" "+v[3],con(p)+" "+v[3]],0,"Fix jövő: folyamatos jelen + jövőre utaló időhatározó.")}]},
+{id:"st",name:"Statikus igék",hu:"Nincs -ing",h:20,g:[
+function(){var p=R(P),s=R(STA),S=Cap(p[0]),a=S+" "+(p[3]?s[1]:s[0])+" "+s[3]+" now.",b=S+" "+p[1]+" "+s[2]+" "+s[3]+" now.";return O("Melyik helyes?",[a],sh([a,b]),"A "+s[0]+" statikus ige, nincs folyamatos alakja.")},
+function(){var f=R(FX);return O(f[0],[f[1]],sh([f[1],f[2]]),f[3])}]},
+{id:"hc",name:"Here comes",hu:"Itt jön / Ott megy",h:300,g:[
+function(){var n=R(HP),d=R([["Here","comes","Itt jön"],["There","goes","Ott megy"]]);return O(d[0]+" ___ "+n[0]+".",[d[1]],["comes","goes","is coming"],"Helyhatározó + ige + alany, egyszerű jelen.",d[2]+" "+n[1]+".")},
+function(){var n=R(HQ),d=R([["Here","come","Itt jönnek"],["There","go","Ott mennek"]]);return O(d[0]+" ___ "+n[0]+".",[d[1]],["come","go","comes","goes"],"Többes alany: come / go.",d[2]+" "+n[1]+".")},
+function(){var d=R([["Here it ___.","comes","Itt jön az."],["There he ___.","goes","Ott megy ő."],["Here they ___.","come","Itt jönnek ők."],["There she ___.","goes","Ott megy ő (lány)."]]);return O(d[0],[d[1]],sh(["come","comes","go","goes"]),"Névmással egyenes szórend: There he goes.",d[2])},
+function(){var a=R(["Perez","Ronaldo","Messi"]),b=R(["Gomez","Kaka","Xavi"]),v=R([["pass","passes"],["kick","kicks"],["throw","throws"]]);return O(a+" ___ the ball to "+b+". ("+v[0]+")",[v[1]],0,"Élő közvetítés: egyszerű jelen.","Élő közvetítés")}]},
+{id:"eg",name:"Egyéb nyelvtan",hu:"Dátum, find, will",h:330,g:[
+function(){var m=R(["January","March","May","July","October","December"]),d=1+Math.random()*28|0,o=d+(d%10==1&&d!=11?"st":d%10==2&&d!=12?"nd":d%10==3&&d!=13?"rd":"th"),us=Math.random()<.5;return O("Amerikai vagy brit írásmód: "+(us?m+" "+o:"the "+o+" "+m),[us?"amerikai":"brit"],["amerikai","brit"],"October 3rd = amerikai, the 3rd October = brit.")},
+function(){var c=R([["China","interesting","Érdekesnek tartom Kínát."],["England","boring","Unalmasnak tartom Angliát."]]);return O("I ___ "+c[0]+" "+c[1]+".",["find"],0,"I find + tárgy + melléknév.",c[2])},
+function(){return O("I ___ go to "+R(["Finland","China","London"])+" next year.",["will"],["will","am","going"],"Jövő idő: will + alapige.")},
+function(){return O("The "+R(["sunglasses","glasses","headphones","jeans","trousers","socks"])+" ___ over there.",["are"],["is","are"],"Többes számú tárgyak: mindig are.")}]},
+{id:"qw",name:"Kérdőszavak",hu:"What, where, how…",h:180,g:[function(){return quiz(QW,"Kérdőszavak lista.")}]},
+{id:"vc",name:"Szójegyzék",hu:"Szavak",h:50,g:[function(){return quiz(VC,"Szójegyzék.")}]}
+];
+var cur=T[0],st={},cq=null,done=0,last="";
+T.forEach(function(t){st[t.id]={ok:0,n:0,s:0}});
+var $=function(i){return document.getElementById(i)};
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function chips(){$("chips").innerHTML=T.map(function(t){return'<button class="chip'+(t==cur?" on":"")+'" style="--h:'+t.h+'" data-id="'+t.id+'">'+t.name+'</button>'}).join("")}
+function score(){var s=st[cur.id];$("sc").innerHTML="✅ <b>"+s.ok+"</b> / "+s.n+" · 🔥 <b>"+s.s+"</b>"}
+function next(){var g,k=0;do{cq=R(cur.g)();k++}while(cq.q+cq.a[0]===last&&k<8);last=cq.q+cq.a[0];done=0;
+document.documentElement.style.setProperty("--h",cur.h);
+$("tn").textContent=cur.name+" · "+cur.hu;
+$("hu").textContent=cq.hu||"";$("hu").style.display=cq.hu?"block":"none";
+$("q").innerHTML=esc(ap(cq.q)).replace("___",'<span class="bl">&nbsp;&nbsp;?&nbsp;&nbsp;</span>');
+$("fb").className="";$("fb").innerHTML="";$("nx").style.display="none";
+if(cq.o){$("ti").style.display="none";$("o").innerHTML=cq.o.map(function(x,i){return'<button class="ob" data-i="'+i+'">'+esc(ap(x))+'</button>'}).join("")}
+else{$("o").innerHTML="";$("ti").style.display="block";$("in").value="";$("in").disabled=false;$("ck").style.display="block";$("in").focus()}
+score()}
+function check(v){if(done)return;done=1;var s=st[cur.id],ok=cq.a.some(function(x){return nm(x)==nm(v)});
+s.n++;if(ok){s.ok++;s.s++}else s.s=0;
+$("fb").className=ok?"ok":"no";
+$("fb").innerHTML=(ok?"✅ Helyes!":"❌ Nem egészen. Helyes: <b>"+esc(ap(cq.a[0]))+"</b>")+"<small>"+esc(cq.t||"")+"</small>";
+$("nx").style.display="block";$("nx").focus();
+if(cq.o)[].forEach.call($("o").children,function(b,i){var c=cq.a.some(function(x){return nm(x)==nm(cq.o[i])});if(c)b.classList.add("ok");else if(nm(cq.o[i])==nm(v))b.classList.add("no")});
+else{$("in").disabled=true;$("ck").style.display="none"}score()}
+function pick(id){cur=T.filter(function(t){return t.id==id})[0]||T[0];history.replaceState(null,"","#"+cur.id);chips();next()}
+$("chips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(b)pick(b.dataset.id)});
+$("o").addEventListener("click",function(e){var b=e.target.closest(".ob");if(b)check(cq.o[b.dataset.i])});
+$("ck").addEventListener("click",function(){if($("in").value.trim())check($("in").value)});
+$("in").addEventListener("keydown",function(e){if(e.key=="Enter"&&$("in").value.trim())check($("in").value)});
+$("nx").addEventListener("click",next);
+$("rs").addEventListener("click",function(){st[cur.id]={ok:0,n:0,s:0};score()});
+window.addEventListener("hashchange",function(){var id=location.hash.slice(1);if(id&&id!=cur.id)pick(id)});
+pick(location.hash.slice(1));
+</script>
+</body>
+</html>
